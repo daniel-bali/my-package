@@ -1,7 +1,6 @@
 {
-  "name": "my-package",
+  "name": "@daniel-bali/my-package",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -17,6 +16,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "build": "npx tsc --project tsconfig.build.json",
     "start": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
