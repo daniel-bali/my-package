@@ -32,5 +32,6 @@ jobs:
       - run: git push
       - run: |
           gh workflow run 'Update dependencies' --repo 'daniel-bali/my-app4'
+          gh workflow run 'Storybook'
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PAT }}
