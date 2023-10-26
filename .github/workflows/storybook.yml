@@ -1,0 +1,29 @@
+name: Storybook
+
+on:
+  workflow_dispatch:
+
+jobs:
+  storybook:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+      - run: |
+          git config --global user.name "Daniel Bali"
+          git config --global user.email "daniel.bali@benestudio.co"
+      - run: |
+          git fetch
+          git checkout storybook
+          git merge main --allow-unrelated-histories --no-ff -X theirs
+      - run: |
+          npm i
+          npm run build-storybook
+          rm -rf docs
+          mv storybook-static docs
+      - run: |
+          git add .
+          git commit -m "storybook update"
+          git push
